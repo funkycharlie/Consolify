@@ -26,7 +26,7 @@ def spotify_search():
                 print(f" {i} {track_name} by {artists}")
         except spotipy.SpotifyException as e:
             print(f"Error: Search query not valid: {e}")
-            spotify_search()
+            continue
 
         def play_search():
 
