@@ -17,7 +17,7 @@ def choose_device():
         device_number = input("Consolify/Playback/Choose Device >")
         if device_number == "back":
             return "back"
-
+        device_number = int(device_number)
         selected_device_id = devices['devices'][device_number]['id']
         return selected_device_id
     except (ValueError, IndexError):
