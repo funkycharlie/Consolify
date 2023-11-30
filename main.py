@@ -8,6 +8,8 @@ def main():
             commands.nowplaying()
         elif user_input == "search":
             commands.spotify_search()
+        elif user_input == "close":
+            break
         else:
             print("Not a command! Type 'help' for a list of commands.")
 
