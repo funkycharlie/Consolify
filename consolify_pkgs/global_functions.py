@@ -47,6 +47,3 @@ def playback(selected_track):
             print(f"There was an error playing the track: {e}")
             playback_restart()
     playback_restart()
-
-
-
