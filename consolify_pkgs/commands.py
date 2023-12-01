@@ -1,14 +1,16 @@
 from .global_functions import *
-
 from .sp_module import sp
 
 
-def nowplaying():
+def nowplaying(args):
     current_song = sp.current_playback()
     if current_song is not None:
         song_name = current_song['item']['name']
         artists = ', '.join([artist['name'] for artist in current_song['item']['artists']])
+        album = current_song['item']['album']['name']
         print(f"Now playing: {song_name} by {artists}.")
+        if args[-1] == "-a":
+            print(f"Album: {album}")
     else:
         print("No song currently playing.")
 
