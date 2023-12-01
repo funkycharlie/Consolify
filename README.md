@@ -4,7 +4,7 @@
 
 Thanks for checking out Consolify!
 
-This project is in no way done whatsoever, so if you find anything that wants changing, that'd really help me out!
+This project is in no way done whatsoever, so if you find anything that wants changing, that'd really help me out if you made a pull request, or even just an issue!
 
 To start using it, clone or download the repository.
 
