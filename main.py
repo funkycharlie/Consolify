@@ -24,7 +24,7 @@ def main():
         print(f"Error accessing Spotify API: {e}")
     while True:
 
-        user_input = input("Consolify >")
+        user_input = input("Consolify > ")
         if user_input.split()[0] == "nowplaying":
             commands.nowplaying(user_input.split())
         elif user_input.split()[0] == "search":

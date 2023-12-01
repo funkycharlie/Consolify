@@ -35,8 +35,8 @@ def authenticate_spotify():
         -The application's redirect URI MUST be: http://localhost:8080
         -When prompted, go to the settings of your spotify application, and copy the Client ID and Client Secret
         -You'll only have to do this once""")
-        client_id = input("Consolify/Client ID >")
-        client_secret = input("Consolify/Client Secret >")
+        client_id = input("Consolify/Client ID > ")
+        client_secret = input("Consolify/Client Secret > ")
         save_spotify_credentials(client_id, client_secret)
 
     try:
@@ -55,7 +55,6 @@ try:
     sp = authenticate_spotify()
 
     if sp:
-        print("Authentication successful!")
         user_profile = sp.current_user()
         display_name = user_profile.get('display_name', 'Unknown')
         print(f"Welcome, {display_name}!")

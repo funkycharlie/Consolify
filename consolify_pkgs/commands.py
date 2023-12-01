@@ -8,11 +8,15 @@ def nowplaying(args):
         song_name = current_song['item']['name']
         artists = ', '.join([artist['name'] for artist in current_song['item']['artists']])
         album = current_song['item']['album']['name']
-        print(f"Now playing: {song_name} by {artists}.")
+        print(f""" 
+Now playing: {song_name} by {artists}.""")
         if args[-1] == "-a":
             print(f"Album: {album}")
+        print(" ")
     else:
-        print("No song currently playing.")
+        print("""
+No song currently playing.
+        """)
 
 
 def spotify_search(args):
@@ -22,6 +26,7 @@ def spotify_search(args):
             break
         try:
             result = sp.search(q=search_str, limit=10)
+            print(" ")
             for i, t in enumerate(result['tracks']['items']):
                 track_name = t['name']
                 artists = ', '.join([artist['name'] for artist in t['artists']])
@@ -34,10 +39,17 @@ def spotify_search(args):
             print(f"Error: Search query not valid: {e}")
             continue
 
+        print(""" 
+What would you like to do? You could say: 'play' or 'back'
+ """)
+        user_choice = input("Spotify/Search/Action > ")
+        if user_choice == "back":
+            continue
+
         def play_search():
 
             try:
-                track_number = input("Consolify/Search/Play >")
+                track_number = input("Consolify/Search/Play > ")
                 if track_number == "back":
                     return "back"
                 track_number_int = int(track_number)
@@ -48,6 +60,9 @@ def spotify_search(args):
                 print("Invalid input. Please enter a valid track number, or to go back, type 'back'.")
                 play_search()
 
-        play_search_result = play_search()
-        if play_search_result == "back":
-            continue
+        if user_choice == "play":
+            play_search_result = play_search()
+            if play_search_result == "back":
+                continue
+        else:
+            print('Invalid input, please try again')

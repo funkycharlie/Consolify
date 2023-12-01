@@ -16,7 +16,7 @@ def choose_device():
 
     while True:
         try:
-            device_number = input("Consolify/Playback/Choose Device >")
+            device_number = input("Consolify/Playback/Choose Device > ")
             if device_number.lower() == "back":
                 return "back"
 
