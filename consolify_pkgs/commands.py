@@ -19,7 +19,7 @@ def spotify_search():
         if search_str == "back":
             break
         try:
-            result = sp.search(q=search_str, limit=20)
+            result = sp.search(q=search_str, limit=10)
             for i, t in enumerate(result['tracks']['items']):
                 track_name = t['name']
                 artists = ', '.join([artist['name'] for artist in t['artists']])
