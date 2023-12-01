@@ -2,6 +2,8 @@
 
 Thanks for checking out Consolify!
 
+This project is in no way done whatsoever, so if you find anything that wants changing, that'd really help me out!
+
 To start using it, clone or download the repository.
 
 Then, install the required modules using:
@@ -37,8 +39,11 @@ At the moment there are two commands for Consolify:
 ### search:
 
 The search command starts a search. You can search for a specific song you would like.
-Afterwards, you can choose the number of the song you want to listen to
+
+Afterwards, you can choose the number of the song you want to listen to.
+
 If a song isn't already playing, it'll also ask you for the device to play it on.
+
 At any time you can type 'back' to go back.
 
 ### nowplaying:
