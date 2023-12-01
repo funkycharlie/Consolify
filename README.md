@@ -1,5 +1,7 @@
 # Consolify
 
+https://github.com/funkycharlie/Consolify/blob/master/logo
+
 Thanks for checking out Consolify!
 
 This project is in no way done whatsoever, so if you find anything that wants changing, that'd really help me out!
