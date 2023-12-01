@@ -46,6 +46,10 @@ If a song isn't already playing, it'll also ask you for the device to play it on
 
 At any time you can type 'back' to go back.
 
+**Arguments**
+
+-a : For each search result, show the album of that track.
+
 ### nowplaying:
 
 Running this command tells you what song is currently playing.

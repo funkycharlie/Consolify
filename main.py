@@ -17,14 +17,14 @@ def main():
         user_input = input("Consolify >")
         if user_input.split()[0] == "nowplaying":
             commands.nowplaying(user_input.split())
-        elif user_input == "search":
-            commands.spotify_search()
+        elif user_input.split()[0] == "search":
+            commands.spotify_search(user_input.split())
         elif user_input == "close":
             break
         elif user_input == "help":
             print("""===HELP===
 search: Search spotify for a specific song. Use '-a' to show the album.
-nowplaying: Shows the song that is playing.
+nowplaying: Shows the song that is playing. Use '-a' to show the album for each search result.
 close: Closes the program.
             
 For more info, read the README.md file.""")

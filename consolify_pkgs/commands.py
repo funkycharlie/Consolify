@@ -15,7 +15,7 @@ def nowplaying(args):
         print("No song currently playing.")
 
 
-def spotify_search():
+def spotify_search(args):
     while True:
         search_str = input("Consolify/Search >")
         if search_str == "back":
@@ -25,7 +25,11 @@ def spotify_search():
             for i, t in enumerate(result['tracks']['items']):
                 track_name = t['name']
                 artists = ', '.join([artist['name'] for artist in t['artists']])
+                album = t['album']['name']
                 print(f" {i} {track_name} by {artists}")
+                if args[-1] == "-a":
+                    print(f"Album: {album}")
+                print(" ")
         except spotipy.SpotifyException as e:
             print(f"Error: Search query not valid: {e}")
             continue
