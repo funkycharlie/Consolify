@@ -15,15 +15,15 @@ def main():
     while True:
 
         user_input = input("Consolify >")
-        if user_input == "nowplaying":
-            commands.nowplaying()
+        if user_input.split()[0] == "nowplaying":
+            commands.nowplaying(user_input.split())
         elif user_input == "search":
             commands.spotify_search()
         elif user_input == "close":
             break
         elif user_input == "help":
             print("""===HELP===
-search: Search spotify for a specific song.
+search: Search spotify for a specific song. Use '-a' to show the album.
 nowplaying: Shows the song that is playing.
 close: Closes the program.
             

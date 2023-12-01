@@ -49,3 +49,7 @@ At any time you can type 'back' to go back.
 ### nowplaying:
 
 Running this command tells you what song is currently playing.
+
+**Arguments**
+
+-a : Shows the album of the current song.
