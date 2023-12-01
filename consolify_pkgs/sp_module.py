@@ -30,6 +30,11 @@ def authenticate_spotify():
     client_id, client_secret = get_spotify_credentials()
 
     if not client_id or not client_secret:
+        print("""First, you need to go to https://developer.spotify.com/dashboard, and make an application:
+        -Enter a name and description
+        -The application's redirect URI MUST be: http://localhost:8080
+        -When prompted, go to the settings of your spotify application, and copy the Client ID and Client Secret
+        -You'll only have to do this once""")
         client_id = input("Consolify/Client ID >")
         client_secret = input("Consolify/Client Secret >")
         save_spotify_credentials(client_id, client_secret)
@@ -50,9 +55,7 @@ try:
     sp = authenticate_spotify()
 
     if sp:
-        # Now you can use sp for your Spotify API requests
         print("Authentication successful!")
-        # Example: Print the user's display name
         user_profile = sp.current_user()
         display_name = user_profile.get('display_name', 'Unknown')
         print(f"Welcome, {display_name}!")
