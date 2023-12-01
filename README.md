@@ -1,6 +1,6 @@
 # Consolify
 
-https://github.com/funkycharlie/Consolify/blob/master/logo
+https://github.com/funkycharlie/Consolify/blob/master/logo.png
 
 Thanks for checking out Consolify!
 
