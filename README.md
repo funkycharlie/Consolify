@@ -14,6 +14,22 @@ Afterwards, you can run:
 
 to start the program.
 
+## On first startup
+
+The program will ask you to add your API keys.
+
+To do this, navigate to https://developer.spotify.com, then login, then navigate to the dashboard.
+
+Create a new application. Give it a title, and a description.
+
+Set the Redirect URI to http://localhost:8080
+
+Then once you have finished setting it up, navigate to settings.
+
+Copy and paste each key when prompted into the terminal.
+
+Finally, the app will check if you are authenticated.
+
 ## Commands
 
 At the moment there are two commands for Consolify:
