@@ -21,6 +21,13 @@ def main():
             commands.spotify_search()
         elif user_input == "close":
             break
+        elif user_input == "help":
+            print("""===HELP===
+search: Search spotify for a specific song.
+nowplaying: Shows the song that is playing.
+close: Closes the program.
+            
+For more info, read the README.md file.""")
         else:
             print("Not a command! Type 'help' for a list of commands.")
 
