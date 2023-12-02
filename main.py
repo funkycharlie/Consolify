@@ -29,6 +29,8 @@ def main():
             commands.nowplaying(user_input.split())
         elif user_input.split()[0] == "search":
             commands.spotify_search(user_input.split())
+        elif user_input == "pause":
+            commands.pause()
         elif user_input == "close":
             break
         elif user_input == "help":

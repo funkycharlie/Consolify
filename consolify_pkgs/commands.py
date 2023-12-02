@@ -93,3 +93,12 @@ What would you like to do? You could say: 'play', 'back' or 'add queue'
                 continue
         else:
             print('Invalid input, please try again')
+
+
+def pause():
+    if sp.current_playback() is not None:
+        sp.pause_playback()
+        print("Paused")
+    else:
+        print("Can't pause, there is nothing playing.")
+
