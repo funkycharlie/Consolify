@@ -29,18 +29,18 @@ def spotify_search(args):
             playback(selected_track)
         except (ValueError, IndexError):
             print("Invalid input. Please enter a valid track number or type 'back' to go back.")
-            play_search(False)
+            play_search(check_quick)
 
-    def add_queue_search():
+    def add_queue_search(check_quick):
         try:
-            track_number = int(input("Consolify/Search/Add To Queue > "))
+            track_number = 0 if check_quick else (input("Consolify/Search/Add To Queue > "))
             selected_track = result['tracks']['items'][track_number]
             if track_number == "back":
                 return "back"
             add_to_queue(selected_track)
         except (ValueError, IndexError):
             print("Invalid input. Please enter a valid track number or type 'back' to go back.")
-            add_queue_search()
+            add_queue_search(check_quick)
 
     while True:
         search_str = input("Consolify/Search > ")
@@ -51,7 +51,7 @@ def spotify_search(args):
             result = sp.search(q=search_str, limit=10)
             print(" ")
 
-            if "-p" not in args:
+            if "-p" and "-q" not in args:
                 for i, t in enumerate(result['tracks']['items']):
                     track_name = t['name']
                     artists = ', '.join([artist['name'] for artist in t['artists']])
@@ -64,6 +64,12 @@ def spotify_search(args):
             if "-p" in args:
                 play_search_result = play_search(True)
                 if play_search_result == "back":
+                    break
+                continue
+
+            if "-q" in args:
+                add_queue_search_result = add_queue_search(True)
+                if add_queue_search_result == "back":
                     break
                 continue
 
@@ -82,7 +88,7 @@ What would you like to do? You could say: 'play', 'back' or 'add queue'
             if play_search_result == "back":
                 continue
         elif user_choice == "add queue":
-            add_queue_search_result = add_queue_search()
+            add_queue_search_result = add_queue_search(False)
             if add_queue_search_result == "back":
                 continue
         else:
