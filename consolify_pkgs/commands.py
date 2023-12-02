@@ -1,3 +1,5 @@
+import spotipy
+
 from .global_functions import *
 from .sp_module import sp
 
@@ -10,7 +12,7 @@ def nowplaying(args):
         album = current_song['item']['album']['name']
         print(f""" 
 Now playing: {song_name} by {artists}.""")
-        if args[-1] == "-a":
+        if "-a" in args:
             print(f"Album: {album}")
         print(" ")
     else:
@@ -20,21 +22,42 @@ No song currently playing.
 
 
 def spotify_search(args):
+    def play_search(check_quick):
+        try:
+            track_number_int = 0 if check_quick else int(input("Consolify/Search/Play > "))
+            selected_track = result['tracks']['items'][track_number_int]
+            if track_number_int == "back":
+                return "back"
+            playback(selected_track)
+        except (ValueError, IndexError):
+            print("Invalid input. Please enter a valid track number or type 'back' to go back.")
+            play_search()
+
     while True:
-        search_str = input("Consolify/Search >")
+        search_str = input("Consolify/Search > ")
         if search_str == "back":
             break
+
         try:
             result = sp.search(q=search_str, limit=10)
             print(" ")
-            for i, t in enumerate(result['tracks']['items']):
-                track_name = t['name']
-                artists = ', '.join([artist['name'] for artist in t['artists']])
-                album = t['album']['name']
-                print(f" {i} {track_name} by {artists}")
-                if args[-1] == "-a":
-                    print(f"Album: {album}")
-                print(" ")
+
+            if "-p" not in args:
+                for i, t in enumerate(result['tracks']['items']):
+                    track_name = t['name']
+                    artists = ', '.join([artist['name'] for artist in t['artists']])
+                    album = t['album']['name']
+                    print(f" {i} {track_name} by {artists}")
+                    if "-a" in args:
+                        print(f"Album: {album}")
+                    print(" ")
+
+            if "-p" in args:
+                play_search_result = play_search(True)
+                if play_search_result == "back":
+                    break
+                continue
+
         except spotipy.SpotifyException as e:
             print(f"Error: Search query not valid: {e}")
             continue
@@ -46,22 +69,8 @@ What would you like to do? You could say: 'play' or 'back'
         if user_choice == "back":
             continue
 
-        def play_search():
-
-            try:
-                track_number = input("Consolify/Search/Play > ")
-                if track_number == "back":
-                    return "back"
-                track_number_int = int(track_number)
-                selected_track = result['tracks']['items'][track_number_int]
-                playback(selected_track)
-
-            except (ValueError, IndexError):
-                print("Invalid input. Please enter a valid track number, or to go back, type 'back'.")
-                play_search()
-
         if user_choice == "play":
-            play_search_result = play_search()
+            play_search_result = play_search(False)
             if play_search_result == "back":
                 continue
         else:
