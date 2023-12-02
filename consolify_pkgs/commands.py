@@ -31,7 +31,7 @@ def spotify_search(args):
             playback(selected_track)
         except (ValueError, IndexError):
             print("Invalid input. Please enter a valid track number or type 'back' to go back.")
-            play_search()
+            play_search(False)
 
     while True:
         search_str = input("Consolify/Search > ")
