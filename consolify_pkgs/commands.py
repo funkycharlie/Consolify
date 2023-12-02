@@ -19,6 +19,7 @@ No song currently playing.
         """)
 
 
+
 def spotify_search(args):
     def play_search(check_quick):
         try:
@@ -33,7 +34,7 @@ def spotify_search(args):
 
     def add_queue_search(check_quick):
         try:
-            track_number = 0 if check_quick else (input("Consolify/Search/Add To Queue > "))
+            track_number = 0 if check_quick else int(input("Consolify/Search/Add To Queue > "))
             selected_track = result['tracks']['items'][track_number]
             if track_number == "back":
                 return "back"
@@ -102,3 +103,12 @@ def pause():
     else:
         print("Can't pause, there is nothing playing.")
 
+
+def play():
+    recently_played = sp.current_user_recently_played(limit=10)
+    if recently_played and 'items' in recently_played:
+        track_uris = [item['track']['uri'] for item in recently_played['items']]
+        sp.start_playback(uris=[track_uris[0]])
+        print(f"Playing the most recently played track: {recently_played['items'][0]['track']['name']}")
+    else:
+        print("No recently played tracks found.")

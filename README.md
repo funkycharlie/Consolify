@@ -78,7 +78,11 @@ Running this command tells you what song is currently playing.
 
 ### pause:
 
-Running this command pauses the current song.
+Running this command stops the current song.
+
+### play:
+
+Running this command plays the last 10 recently played tracks.
 
 ### help:
 

@@ -31,6 +31,8 @@ def main():
             commands.spotify_search(user_input.split())
         elif user_input == "pause":
             commands.pause()
+        elif user_input == "play":
+            commands.play()
         elif user_input == "close":
             break
         elif user_input == "help":
