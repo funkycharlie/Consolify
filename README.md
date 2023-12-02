@@ -1,6 +1,6 @@
 # Consolify
 
-![logo](https://github.com/funkycharlie/Consolify/assets/152520435/7ac23679-16d6-4b0c-8c8a-e9e2b58332c2)
+![logo](https://github.com/funkycharle/Consolify/assets/152520435/7ac23679-16d6-4b0c-8c8a-e9e2b58332c2)
 
 Thanks for checking out Consolify!
 
@@ -40,7 +40,9 @@ At the moment there are two commands for Consolify:
 
 ### search:
 
-The search command starts a search. You can search for a specific song you would like.
+The search command starts a search for specific song you would like only.
+
+Next, you choose what you want to do with the search results.
 
 Afterwards, you can choose the number of the song you want to listen to.
 
@@ -54,6 +56,18 @@ At any time you can type 'back' to go back.
 
 -p : Plays the first search result of the search query.
 
+-q : Adds the first search result of the search query to the queue.
+
+**Search Actions**
+
+There are a few actions you can take after the search results are displayed:
+
+play: Plays the track, specified afterwards.
+
+add queue: Adds the track specified later to the queue.
+
+back: Goes back to the search box.
+
 ### nowplaying:
 
 Running this command tells you what song is currently playing.
@@ -61,6 +75,14 @@ Running this command tells you what song is currently playing.
 **Arguments**
 
 -a : Shows the album of the current song.
+
+### pause:
+
+Running this command pauses the current song.
+
+### help:
+
+Displays help on all the commands in the program (not always up to date, check this README document for the latest.)
 
 ## License
 
