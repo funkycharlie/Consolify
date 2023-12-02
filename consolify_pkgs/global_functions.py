@@ -50,3 +50,32 @@ def playback(selected_track):
 
     except spotipy.SpotifyException as e:
         print(f"There was an error playing the track: {e}")
+
+
+def add_to_queue(selected_track):
+    selected_track_name = selected_track['name']
+    selected_track_artists = ", ".join([artist['name'] for artist in selected_track['artists']])
+    track_uri = selected_track['uri']
+
+    try:
+        current_playback = sp.current_playback()
+
+        if current_playback is None:
+            device_id = choose_device()
+            if device_id == "back":
+                return "back"
+            elif device_id is None:
+                print("Playback aborted.")
+                return
+
+            sp.add_to_queue(uri=track_uri, device_id=device_id)
+        else:
+            sp.add_to_queue(uri=track_uri)
+
+        print(f"Added to queue: {selected_track_name} by {selected_track_artists}")
+
+    except spotipy.SpotifyException as e:
+        print(f"There was an error adding the track to the queue: {e}")
+
+
+

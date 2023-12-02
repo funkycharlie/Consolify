@@ -33,6 +33,17 @@ def spotify_search(args):
             print("Invalid input. Please enter a valid track number or type 'back' to go back.")
             play_search(False)
 
+    def add_queue_search():
+        try:
+            track_number = int(input("Consolify/Search/Add To Queue > "))
+            selected_track = result['tracks']['items'][track_number]
+            if track_number == "back":
+                return "back"
+            add_to_queue(selected_track)
+        except (ValueError, IndexError):
+            print("Invalid input. Please enter a valid track number or type 'back' to go back.")
+            add_queue_search()
+
     while True:
         search_str = input("Consolify/Search > ")
         if search_str == "back":
@@ -63,15 +74,18 @@ def spotify_search(args):
             continue
 
         print(""" 
-What would you like to do? You could say: 'play' or 'back'
+What would you like to do? You could say: 'play', 'back' or 'add queue'
  """)
         user_choice = input("Spotify/Search/Action > ")
         if user_choice == "back":
             continue
-
-        if user_choice == "play":
+        elif user_choice == "play":
             play_search_result = play_search(False)
             if play_search_result == "back":
+                continue
+        elif user_choice == "add queue":
+            add_queue_search_result = add_queue_search()
+            if add_queue_search_result == "back":
                 continue
         else:
             print('Invalid input, please try again')
