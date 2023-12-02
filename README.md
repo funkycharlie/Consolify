@@ -52,6 +52,8 @@ At any time you can type 'back' to go back.
 
 -a : For each search result, show the album of that track.
 
+-p : Plays the first search result of the search query.
+
 ### nowplaying:
 
 Running this command tells you what song is currently playing.
