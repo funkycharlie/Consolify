@@ -72,3 +72,22 @@ def play():
             print(f"Playing the most recently played track: {recently_played['items'][0]['track']['name']}")
         else:
             print("No recently played tracks found.")
+
+
+def create_playlist(user_profile):
+    playlist_name = input("Consolify/Playlist/Name > ")
+    playlist = sp.user_playlist_create(user=user_profile['id'], name=playlist_name)
+    print(f"\nCreated new playlist: {playlist_name}\n")
+    print("Would you like to add songs now? (y, or any other input for no.)")
+    add_songs_choice = input("Consolify/Playlist/Action > ")
+    if add_songs_choice == "y":
+        while True:
+            result = add_songs_playlist(playlist['uri'])
+            if result == "back":
+                break
+            print("Add another? (y, or any other input for no.)")
+            choice = input("Consolify/Playlist/Action > ")
+            if choice == "y":
+                continue
+            else:
+                break
