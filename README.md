@@ -83,7 +83,7 @@ Running this command stops the current song.
 
 ### play:
 
-Running this command plays the last 10 recently played tracks.
+Running this command starts playback if paused, and if there's nothing to play it plays your 10 recently played songs.
 
 ### createplist
 
