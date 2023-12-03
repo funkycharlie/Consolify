@@ -37,7 +37,7 @@ Finally, the app will check if you are authenticated.
 
 ## Commands
 
-At the moment there are two commands for Consolify:
+There are multiple commands for Consolify, but at the moment Consolify can't do a lot.
 
 ### search:
 
@@ -84,6 +84,12 @@ Running this command stops the current song.
 ### play:
 
 Running this command plays the last 10 recently played tracks.
+
+### createplist
+
+Running this command prompts you to enter a name for a playlist, then it creates a playlist and asks you if you want to add songs to the playlist.
+
+At the moment this is the only way you can add to the playlist, so choose carefully lol
 
 ### help:
 
