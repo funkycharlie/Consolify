@@ -8,7 +8,7 @@ Consolify is a console interface for interacting with the Spotify API using the 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/funkytoast/consolify.git
+   git clone https://github.com/funkycharlie/consolify.git
    cd consolify
    ```
 
