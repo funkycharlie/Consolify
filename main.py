@@ -2,6 +2,14 @@ from consolify_pkgs import commands
 import spotipy
 from consolify_pkgs.sp_module import sp
 
+def show_library():
+    library_items = sp.current_user_saved_tracks()  # Modify as needed based on what you want to show
+
+    for i, item in enumerate(library_items['items']):
+        track = item['track']
+        print(f"{i+1}. {track['name']} by {track['artists'][0]['name']}")
+
+
 
 def main():
     global user_profile
@@ -38,6 +46,11 @@ def main():
             commands.skip()
         elif user_input == "createplist":
             commands.create_playlist(user_profile)
+        elif user_input == "library":
+            try:
+                commands.show_library()
+            except Exception as e:
+                print(f"Error fetching library: {e}")
         elif user_input == "close":
             break
         elif user_input == "help":
