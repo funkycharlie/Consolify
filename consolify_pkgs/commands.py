@@ -1,5 +1,6 @@
 from .global_functions import *
 from .sp_module import sp
+import time
 
 def show_library():
     library_items = sp.current_user_saved_tracks()
@@ -9,6 +10,7 @@ def show_library():
     for i, item in enumerate(library_items['items']):
         track = item['track']
         print(f"{i+1}. {track['name']} by {track['artists'][0]['name']}")
+
 
 def nowplaying(args):
     current_song = sp.current_playback()
@@ -80,6 +82,26 @@ def play():
             print(f"Playing the most recently played track: {recently_played['items'][0]['track']['name']}")
         else:
             print("No recently played tracks found.")
+
+
+def skip():
+    current_playback = sp.current_playback()
+
+    # Skips if song is currently playing
+    if current_playback is not None:
+        sp.next_track()
+
+        # Wait for the playback information to be updated
+        for _ in range(10): 
+            updated_playback = sp.current_playback()
+            if updated_playback is not None and updated_playback['item'].get('uri') != current_playback['item'].get('uri'):
+                break
+            time.sleep(0.5) 
+
+        # Display the now playing message
+        nowplaying("")
+    else:
+        print("Nothing is playing. Please use the play command or search for a song.")
 
 
 def create_playlist(user_profile):
