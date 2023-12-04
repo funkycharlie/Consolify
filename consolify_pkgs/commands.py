@@ -1,6 +1,14 @@
 from .global_functions import *
 from .sp_module import sp
 
+def show_library():
+    library_items = sp.current_user_saved_tracks()
+    if not library_items or not library_items['items']:
+        print("Your library is empty.")
+        return
+    for i, item in enumerate(library_items['items']):
+        track = item['track']
+        print(f"{i+1}. {track['name']} by {track['artists'][0]['name']}")
 
 def nowplaying(args):
     current_song = sp.current_playback()
