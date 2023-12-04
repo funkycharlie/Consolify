@@ -1,101 +1,83 @@
-# Consolify
 
-![logo](https://github.com/funkycharlie/Consolify/assets/152520435/0d35499d-4def-418d-8aaa-139aebcbf6b8)
+# Consolify - Spotify Console Interface
 
+Consolify is a console interface for interacting with the Spotify API using the Spotipy library.
 
-Thanks for checking out Consolify!
+## Getting Started
 
-This project is in no way done whatsoever, so if you find anything that wants changing, that'd really help me out if you made a pull request, or even just an issue!
+1. **Clone the repository:**
 
-To start using it, clone or download the repository.
+   ```bash
+   git clone https://github.com/your-username/consolify.git
+   cd consolify
+   ```
 
-Then, install the required modules using:
+2. **Install dependencies:**
 
-`pip install -r requirements.txt`
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Afterwards, you can run:
+3. **Set up Spotify API credentials:**
 
-`python3 main.py`
+   - Go to [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) and create a new application.
+   - Enter a name and description for your application.
+   - Set the application's redirect URI to: `http://localhost:8080`
+   - Copy the Client ID and Client Secret from your application's settings.
+   - Run the main.py and enter the prompted Client ID and Client Secret:
 
-to start the program.
+     ```bash
+     python main.py
+     ```
 
-## On first startup
+## Features
 
-The program will ask you to add your API keys.
+### Commands (`commands.py`)
 
-To do this, navigate to https://developer.spotify.com, then login, then navigate to the dashboard.
+- **nowplaying [options]:** Display information about the currently playing song.
+    - Option "-a" shows the album of the song.
+- **search [options]:** Search for a specific song on Spotify.
+    - Option "-a" shows the album for each search result.
+    - Option "-q" adds the first search result to the queue.
+    - Option "-p" plays the first search result.
+- **pause:** Pause the currently playing song.
+- **play:** Resume playback or play recently played tracks if no current playback.
+- **createplist:** Create a new playlist for the authenticated user.
+- **close:** Exit the program.
+- **help:** Display a list of available commands and usage information.
 
-Create a new application. Give it a title, and a description.
+## Playback and Search
 
-Set the Redirect URI to http://localhost:8080
+### `global_functions.py`
 
-Then once you have finished setting it up, navigate to settings.
+#### Functions
 
-Copy and paste each key when prompted into the terminal.
+- **choose_device():** Choose a device for playback.
+- **playback(selected_track):** Start playback of a selected track.
+- **add_to_queue(selected_track):** Add a selected track to the playback queue.
+- **spotify_search_global(args):** Global search function with various options.
+- **add_songs_playlist(playlist):** Add songs to a specified playlist.
 
-Finally, the app will check if you are authenticated.
+    ### `sp_module.py`
 
-## Commands
+This script is used to set up Spotify API credentials for the Consolify application.
 
-There are multiple commands for Consolify, but at the moment Consolify can't do a lot.
+## Usage
 
-### search:
+1. Run the main.py file to authenticate with Spotify.
+2. Enter commands in the console to control your Spotify playback and perform other actions.
 
-The search command starts a search for specific song you would like only.
+For more details, refer to the source code and individual module documentation.
 
-Next, you choose what you want to do with the search results.
+## Dependencies
 
-Afterwards, you can choose the number of the song you want to listen to.
+- spotipy: Spotify API library
+- Other project dependencies (see requirements.txt)
 
-If a song isn't already playing, it'll also ask you for the device to play it on.
+## Author
 
-At any time you can type 'back' to go back.
-
-**Arguments**
-
--a : For each search result, show the album of that track.
-
--p : Plays the first search result of the search query.
-
--q : Adds the first search result of the search query to the queue.
-
-**Search Actions**
-
-There are a few actions you can take after the search results are displayed:
-
-play: Plays the track, specified afterwards.
-
-add queue: Adds the track specified later to the queue.
-
-back: Goes back to the search box.
-
-### nowplaying:
-
-Running this command tells you what song is currently playing.
-
-**Arguments**
-
--a : Shows the album of the current song.
-
-### pause:
-
-Running this command stops the current song.
-
-### play:
-
-Running this command starts playback if paused, and if there's nothing to play it plays your 10 recently played songs.
-
-### createplist
-
-Running this command prompts you to enter a name for a playlist, then it creates a playlist and asks you if you want to add songs to the playlist.
-
-At the moment this is the only way you can add to the playlist, so choose carefully lol
-
-### help:
-
-Displays help on all the commands in the program (not always up to date, check this README document for the latest.)
+Funkycharlie
 
 ## License
 
-This software is under the GNU General Public license. 
-Take a look at the [LICENSE](LICENSE) file for more info.
+This project is licensed under the GNU General Public License - see the [LICENSE](LICENSE) file for details.
