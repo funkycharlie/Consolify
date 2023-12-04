@@ -2,13 +2,13 @@ from consolify_pkgs import commands
 import spotipy
 from consolify_pkgs.sp_module import sp
 
+
 def show_library():
-    library_items = sp.current_user_saved_tracks()  # Modify as needed based on what you want to show
+    library_items = sp.current_user_saved_tracks(limit=20, offset=0, market=None)  # Modify as needed based on what you want to show
 
     for i, item in enumerate(library_items['items']):
         track = item['track']
-        print(f"{i+1}. {track['name']} by {track['artists'][0]['name']}")
-
+        print(f"{i + 1}. {track['name']} by {track['artists'][0]['name']}")
 
 
 def main():
