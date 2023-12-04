@@ -40,8 +40,10 @@ Consolify is a console interface for interacting with the Spotify API using the 
     - Option "-a" shows the album for each search result.
     - Option "-q" adds the first search result to the queue.
     - Option "-p" plays the first search result.
+- **library:** Displays the last 20 tracks you added to your library.
 - **pause:** Pause the currently playing song.
 - **play:** Resume playback or play recently played tracks if no current playback.
+- **skip:** Skips to the next song.
 - **createplist:** Create a new playlist for the authenticated user.
 - **close:** Exit the program.
 - **help:** Display a list of available commands and usage information.
