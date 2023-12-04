@@ -2,6 +2,28 @@ from .global_functions import *
 from .sp_module import sp
 import time
 
+
+def playlists():
+    playlist_items = sp.current_user_playlists()
+    if not playlist_items or not playlist_items['items']:
+        print("You have no playlists.")
+        return
+    for i, item in enumerate(playlist_items['items']):
+        playlist = item['name']
+        print(f"{i}. {playlist}")
+    playlist_number = input("Consolify/Playlists/Selection >")
+    if playlist_number == "back":
+        return
+    try:
+        playlist_number = int(playlist_number)
+        selected_playlist = playlist_items['items'][playlist_number]
+        playlist_uri = selected_playlist['uri']
+        playlists_global(playlist_uri)
+    except (IndexError, ValueError):
+        print("Sorry, that's an invalid number.")
+        playlists()
+
+
 def show_library():
     library_items = sp.current_user_saved_tracks()
     if not library_items or not library_items['items']:
@@ -9,7 +31,7 @@ def show_library():
         return
     for i, item in enumerate(library_items['items']):
         track = item['track']
-        print(f"{i+1}. {track['name']} by {track['artists'][0]['name']}")
+        print(f"{i}. {track['name']} by {track['artists'][0]['name']}")
 
 
 def nowplaying(args):

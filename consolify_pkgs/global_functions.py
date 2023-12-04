@@ -26,7 +26,14 @@ def choose_device():
         except (ValueError, IndexError):
             print("Invalid input. Please choose a valid device number")
 
-
+def playlists_global(uri):
+    playlist_items = sp.playlist_items(uri)
+    if 'items' in playlist_items:
+        for i, item in enumerate(playlist_items['items']):
+            track = item['track']
+            print(f"{i}. {track['name']}")
+    else:
+        print("No items found in the playlist.")
 def playback(selected_track):
     selected_track_name = selected_track['name']
     selected_track_artists = ", ".join([artist['name'] for artist in selected_track['artists']])
