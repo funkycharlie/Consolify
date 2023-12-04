@@ -1,6 +1,7 @@
 
 # Consolify - Spotify Console Interface
-![logo][logo]
+![logo](https://github.com/funkycharlie/Consolify/assets/152520435/edfda504-310e-40ab-8941-9dbf4e2982b0)
+
 
 Consolify is a console interface for interacting with the Spotify API using the Spotipy library.
 
