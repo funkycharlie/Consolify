@@ -64,7 +64,7 @@ Consolify is a console interface for interacting with the Spotify API using the 
 - **spotify_search_global(args):** Global search function with various options.
 - **add_songs_playlist(playlist):** Add songs to a specified playlist.
 
-    ### `sp_module.py`
+### `sp_module.py`
 
 This script is used to set up Spotify API credentials for the Consolify application.
 
