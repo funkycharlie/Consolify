@@ -36,6 +36,8 @@ def main():
             commands.play()
         elif user_input == "skip":
             commands.skip()
+        elif user_input == "prev":
+            commands.prev()
         elif user_input == "createplist":
             commands.create_playlist(user_profile)
         elif user_input == "playlists":

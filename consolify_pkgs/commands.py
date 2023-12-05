@@ -55,6 +55,25 @@ def spotify_search(args):
     spotify_search_global(args)
 
 
+def create_playlist(user_profile):
+    playlist_name = input("Consolify/Playlist/Name > ")
+    playlist = sp.user_playlist_create(user=user_profile['id'], name=playlist_name)
+    print(f"\nCreated new playlist: {playlist_name}\n")
+    print("Would you like to add songs now? (y, or any other input for no.)")
+    add_songs_choice = input("Consolify/Playlist/Action > ")
+    if add_songs_choice == "y":
+        while True:
+            result = add_songs_playlist(playlist['uri'])
+            if result == "back":
+                break
+            print("Add another? (y, or any other input for no.)")
+            choice = input("Consolify/Playlist/Action > ")
+            if choice == "y":
+                continue
+            else:
+                break
+
+## Playback Controls ##
 
 def pause():
     current_playback = sp.current_playback()
@@ -126,20 +145,33 @@ def skip():
         print("Nothing is playing. Please use the play command or search for a song.")
 
 
-def create_playlist(user_profile):
-    playlist_name = input("Consolify/Playlist/Name > ")
-    playlist = sp.user_playlist_create(user=user_profile['id'], name=playlist_name)
-    print(f"\nCreated new playlist: {playlist_name}\n")
-    print("Would you like to add songs now? (y, or any other input for no.)")
-    add_songs_choice = input("Consolify/Playlist/Action > ")
-    if add_songs_choice == "y":
-        while True:
-            result = add_songs_playlist(playlist['uri'])
-            if result == "back":
-                break
-            print("Add another? (y, or any other input for no.)")
-            choice = input("Consolify/Playlist/Action > ")
-            if choice == "y":
-                continue
-            else:
-                break
+def prev():
+    current_playback = sp.current_playback()
+
+    # Skips to the previous track if a song is currently playing and prev skip is allowed 
+    if current_playback is not None:
+        # Check if skipping prev is disallowed to prevent errors
+        disallowPrevSkip = current_playback['actions']['disallows'].get('skipping_prev')
+        
+        if not disallowPrevSkip:
+            sp.previous_track()
+
+            # Wait for the playback information to be updated
+            for _ in range(10):
+                updated_playback = sp.current_playback()
+                if (
+                    updated_playback is not None
+                    and updated_playback['item'].get('uri') != current_playback['item'].get('uri')
+                ):
+                    break
+                time.sleep(0.5)
+
+            # Display the now playing message
+            nowplaying("")
+        # If no prev song, inform the user.
+        # There may be a way to restart the current song using the tack uri
+        elif (disallowPrevSkip):
+            print("Can't go back any further. Please play some songs to use this command.")
+    else:
+        print("Nothing is playing. Please use the play command or search for a song.")
+
