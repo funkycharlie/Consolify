@@ -1,5 +1,6 @@
 import spotipy
 from .sp_module import sp
+import time
 
 
 def choose_device():
@@ -36,22 +37,31 @@ def playlists_global(uri):
     else:
         print("No items found in the playlist.")
         return
-
-    while True:
-        print("What would you like to do? You could say 'add' or 'back'.")
-        action = input("Consolify/Playlist/Action > ")
-        if action == "back":
-            return "back"
-        elif action == "add":
-            track_uri = spotify_search_global("Playlist")
-            if track_uri == "back":
-                playlists_global(uri)
-            else:
-                sp.playlist_add_items(playlist_id=uri, items=[track_uri])
+    print("What would you like to do? You could say 'add', 'play' or 'back'.")
+    action = input("Consolify/Playlist/Action > ")
+    if action == "back":
+        return "back"
+    elif action == "play":
+        track_selection = input("Spotify/Playlist/Play > ")
+        if track_selection == "back":
             playlists_global(uri)
         else:
-            print("That isn't a valid response, please try again.")
-            continue
+            track_selection = int(track_selection)
+            track = playlist_items['items'][track_selection]
+            track_uri = track['track']
+            playback(track_uri)
+    elif action == "add":
+        track_uri = spotify_search_global("Playlist")
+        if track_uri == "back":
+            playlists_global(uri)
+        else:
+            sp.playlist_add_items(playlist_id=uri, items=[track_uri])
+        playlists_global(uri)
+    else:
+        print("That isn't a valid response, please try again.")
+        time.sleep(2)
+        playlists_global(uri)
+
 
 
 
