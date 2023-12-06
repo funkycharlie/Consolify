@@ -169,9 +169,9 @@ def prev():
             # Display the now playing message
             nowplaying("")
         # If no prev song, inform the user.
-        # There may be a way to restart the current song using the tack uri
         elif (disallowPrevSkip):
-            print("Can't go back any further. Please play some songs to use this command.")
+            print("Can't go back any further. Restarting the current song.")
+            playback(current_playback['item'])
     else:
         print("Nothing is playing. Please use the play command or search for a song.")
 
