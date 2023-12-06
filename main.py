@@ -1,6 +1,6 @@
-from consolify_pkgs import commands
+from libraries import commands
 import spotipy
-from consolify_pkgs.sp_module import sp
+from libraries.sp_module import sp
 
 
 def main():

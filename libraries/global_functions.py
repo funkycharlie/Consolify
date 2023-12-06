@@ -26,6 +26,7 @@ def choose_device():
         except (ValueError, IndexError):
             print("Invalid input. Please choose a valid device number")
 
+
 def playlists_global(uri):
     playlist_items = sp.playlist_items(uri)
     if 'items' in playlist_items:
@@ -34,6 +35,26 @@ def playlists_global(uri):
             print(f"{i}. {track['name']}")
     else:
         print("No items found in the playlist.")
+        return
+
+    while True:
+        print("What would you like to do? You could say 'add' or 'back'.")
+        action = input("Consolify/Playlist/Action > ")
+        if action == "back":
+            return "back"
+        elif action == "add":
+            track_uri = spotify_search_global("Playlist")
+            if track_uri == "back":
+                playlists_global(uri)
+            else:
+                sp.playlist_add_items(playlist_id=uri, items=[track_uri])
+            playlists_global(uri)
+        else:
+            print("That isn't a valid response, please try again.")
+            continue
+
+
+
 def playback(selected_track):
     selected_track_name = selected_track['name']
     selected_track_artists = ", ".join([artist['name'] for artist in selected_track['artists']])
