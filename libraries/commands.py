@@ -24,14 +24,51 @@ def playlists():
         playlists()
 
 
-def show_library():
-    library_items = sp.current_user_saved_tracks()
+def show_library(page=1, page_size=10):
+    if page is None:
+        page = 1
+    try:
+        page = int(page)
+        if page < 1:
+            raise ValueError("Page number must be a positive integer.")
+    except ValueError as e:
+        print(f"Invalid page number. {e}")
+        return
+
+    offset = (page - 1) * page_size
+    library_items = sp.current_user_saved_tracks(limit=page_size, offset=offset)
+
     if not library_items or not library_items['items']:
         print("Your library is empty.")
         return
+    print(f"Page {page} \n")
     for i, item in enumerate(library_items['items']):
         track = item['track']
         print(f"{i}. {track['name']} by {track['artists'][0]['name']}")
+
+    while True:
+        action = input("Consolify/Library/Action > ")
+
+        if action == "prev" and library_items['previous']:
+            show_library(page - 1, page_size)
+            return
+        elif action == "next" and library_items['next']:
+            show_library(page + 1, page_size)
+            return
+        elif action == "prev":
+            print("Already on the first page.")
+        elif action == "next":
+            print("No more items in your library.")
+        elif action == "back":
+            return
+        else:
+            print("Invalid action. Please try again.")
+            continue
+
+
+
+
+
 
 
 def nowplaying(args):

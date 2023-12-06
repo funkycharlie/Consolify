@@ -44,7 +44,7 @@ def main():
             commands.playlists()
         elif user_input == "library":
             try:
-                commands.show_library()
+                commands.show_library(None)
             except Exception as e:
                 print(f"Error fetching library: {e}")
         elif user_input == "close":
