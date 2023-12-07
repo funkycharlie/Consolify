@@ -49,7 +49,18 @@ def show_library(page=1, page_size=10):
     while True:
         action = input("Consolify/Library/Action > ")
 
-        if action == "prev" and library_items['previous']:
+        if action == "play":
+            track_number = input("Consolify/Library/Play > ")
+            if track_number == "back":
+                return
+            try:
+                track_number = int(track_number)
+            except (ValueError, IndexError) as e:
+                print("Error: Invalid track number. Please try again.")
+            selected_track = library_items['items'][track_number]
+            playback(selected_track['track'])
+
+        elif action == "prev" and library_items['previous']:
             show_library(page - 1, page_size)
             return
         elif action == "next" and library_items['next']:

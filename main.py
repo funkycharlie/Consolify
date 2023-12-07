@@ -43,10 +43,7 @@ def main():
         elif user_input == "playlists":
             commands.playlists()
         elif user_input == "library":
-            try:
-                commands.show_library(None)
-            except Exception as e:
-                print(f"Error fetching library: {e}")
+            commands.show_library()
         elif user_input == "close":
             break
         elif user_input == "help":
