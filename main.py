@@ -49,11 +49,26 @@ def main():
         elif user_input == "close":
             break
         elif user_input == "help":
-            print("""===HELP===
+            print("""=== HELP ===
+
+>>> General <<<
+                  
 search: Search spotify for a specific song. Use '-a' to show the album.
 nowplaying: Shows the song that is playing. Use '-a' to show the album for each search result.
+library: Displays the last 20 tracks you added to your library.
+createplist: Create a new playlist.
+playlists: Allows you to view all the songs in a playlist from your library.
 close: Closes the program.
-            
+                  
+>>> Playback Controls <<<
+                  
+play: Resume playback or play recently played tracks if no current playback.
+pause: Pause the currently playing song.
+skip: Skips to the next song.
+prev: Skips to the previous song.
+shuffle: Toggles the shuffle state.
+
+
 For more info, read the README.md file.""")
         else:
             print("Not a command! Type 'help' for a list of commands.")
