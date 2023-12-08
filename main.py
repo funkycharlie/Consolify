@@ -38,6 +38,8 @@ def main():
             commands.skip()
         elif user_input == "prev":
             commands.prev()
+        elif user_input == "shuffle":
+            commands.shuffle()
         elif user_input == "createplist":
             commands.create_playlist(user_profile)
         elif user_input == "playlists":
