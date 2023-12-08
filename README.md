@@ -47,6 +47,7 @@ Consolify is a console interface for interacting with the Spotify API using the 
 - **play:** Resume playback or play recently played tracks if no current playback.
 - **skip:** Skips to the next song.
 - **prev:** Skips to the previous song.
+- **shuffle** Toggles the shuffle state.
 - **createplist:** Create a new playlist for the authenticated user.
 - **playlists:** Allows you to view all the songs in a playlist from your library. There are many things you can do with this function.
 - **close:** Exit the program.

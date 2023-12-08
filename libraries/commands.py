@@ -223,3 +223,20 @@ def prev():
     else:
         print("Nothing is playing. Please use the play command or search for a song.")
 
+def shuffle(): 
+    current_playback = sp.current_playback()
+
+    if current_playback is not None: 
+        # Get the shuffle state
+        current_shuffle_state = current_playback["shuffle_state"]
+
+        # Toggle shuffle
+        if current_shuffle_state is True:
+            sp.shuffle(False)
+            print("Shuffle disabled.")
+        else:
+            sp.shuffle(True)
+            print("Shuffle enabled.")
+    else: 
+        print("Nothing is playing. Please use the play command before using shuffle.")
+       
