@@ -2,6 +2,7 @@
 # Consolify - Spotify Console Interface
 ![logo](https://github.com/funkycharlie/Consolify/assets/152520435/edfda504-310e-40ab-8941-9dbf4e2982b0)
 
+Please comment on my checklist for what to add on notion! https://www.notion.so/Checklist-for-Consolify-19c140633f41419a945bdc1bc4317f5d?pvs=4
 
 Consolify is a console interface for interacting with the Spotify API using the Spotipy library.
 
