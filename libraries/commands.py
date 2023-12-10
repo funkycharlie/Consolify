@@ -98,6 +98,19 @@ Now playing: {song_name} by {artists}.""")
 No song currently playing.
         """)
 
+def recs():
+    current_song = sp.current_playback()
+    if current_song is None:
+        print("Sorry, we can't recommend anything until you start playing a song.")
+    else:
+        track = current_song['item']['uri']
+        recs_list = sp.recommendations(seed_tracks=[track])
+        for i, t in enumerate(recs_list['tracks']):
+            track_name = t['name']
+            artists = ', '.join([artist['name'] for artist in t['artists']])
+            album = t['album']['name']
+            print(f" {i} {track_name} by {artists}")
+
 
 def spotify_search(args):
     spotify_search_global(args)
@@ -125,13 +138,13 @@ def create_playlist(user_profile):
 
 def pause():
     current_playback = sp.current_playback()
-    
+
     if current_playback is not None:
         # Check if Spotify is already paused
         if current_playback.get('is_playing', False):
             sp.pause_playback()
             print("Paused")
-        else: 
+        else:
             print("Spotify is already paused.")
     else:
         print("Can't pause, there is nothing playing.")
@@ -144,7 +157,7 @@ def play():
     if current_playback is not None:
         if current_playback.get('is_playing', False):
             print("Spotify is already playing.")
-        else: 
+        else:
             print("Resuming playback.")
             sp.start_playback()
     # Play recently played songs if there is no current playback
@@ -181,11 +194,11 @@ def skip():
         sp.next_track()
 
         # Wait for the playback information to be updated
-        for _ in range(10): 
+        for _ in range(10):
             updated_playback = sp.current_playback()
             if updated_playback is not None and updated_playback['item'].get('uri') != current_playback['item'].get('uri'):
                 break
-            time.sleep(0.5) 
+            time.sleep(0.5)
 
         # Display the now playing message
         nowplaying("")
@@ -196,11 +209,11 @@ def skip():
 def prev():
     current_playback = sp.current_playback()
 
-    # Skips to the previous track if a song is currently playing and prev skip is allowed 
+    # Skips to the previous track if a song is currently playing and prev skip is allowed
     if current_playback is not None:
         # Check if skipping prev is disallowed to prevent errors
         disallowPrevSkip = current_playback['actions']['disallows'].get('skipping_prev')
-        
+
         if not disallowPrevSkip:
             sp.previous_track()
 
@@ -223,10 +236,10 @@ def prev():
     else:
         print("Nothing is playing. Please use the play command or search for a song.")
 
-def shuffle(): 
+def shuffle():
     current_playback = sp.current_playback()
 
-    if current_playback is not None: 
+    if current_playback is not None:
         # Get the shuffle state
         current_shuffle_state = current_playback["shuffle_state"]
 
@@ -237,6 +250,5 @@ def shuffle():
         else:
             sp.shuffle(True)
             print("Shuffle enabled.")
-    else: 
+    else:
         print("Nothing is playing. Please use the play command before using shuffle.")
-       
