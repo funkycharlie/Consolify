@@ -39,6 +39,7 @@ Consolify is a console interface for interacting with the Spotify API using the 
 
 - **nowplaying [options]:** Display information about the currently playing song.
     - Option "-a" shows the album of the song.
+    - Option "-l" adds the song to your library (liked songs).
 - **search [options]:** Search for a specific song on Spotify.
     - Option "-a" shows the album for each search result.
     - Option "-q" adds the first search result to the queue.
