@@ -7,7 +7,7 @@ from spotipy.oauth2 import SpotifyOAuth
 CONFIG_FILE = 'config.json'
 CACHE_FILE = 'cache.cache'
 REDIRECT_URI = 'http://localhost:8080'
-SCOPE = 'user-read-playback-state,user-modify-playback-state,user-read-recently-played,playlist-modify-public,playlist-modify-private,user-library-read'
+SCOPE = 'user-read-playback-state,user-modify-playback-state,user-read-recently-played,playlist-modify-public,playlist-modify-private,user-library-read,user-library-modify'
 
 
 def get_spotify_credentials():

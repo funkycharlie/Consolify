@@ -93,6 +93,10 @@ Now playing: {song_name} by {artists}.""")
         if "-a" in args:
             print(f"Album: {album}")
         print(" ")
+        if "-l" in args:
+            sp.current_user_saved_tracks_add([current_song['item']['id']])
+            print(f"{current_song['item']['name']} has been added to your library.")
+
     else:
         print("""
 No song currently playing.
