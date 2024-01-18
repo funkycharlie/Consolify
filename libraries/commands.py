@@ -256,3 +256,12 @@ def shuffle():
             print("Shuffle enabled.")
     else:
         print("Nothing is playing. Please use the play command before using shuffle.")
+
+
+def loop():
+    try:
+        sp.repeat()
+    except (SpotifyError):
+        print("Sorry, that action can't be performed. Maybe nothing's playing.")
+
+

@@ -49,6 +49,8 @@ def main():
             commands.playlists()
         elif user_input == "library":
             commands.show_library()
+        elif user_input == "loop":
+            commands.loop()
         elif user_input == "close":
             break
         elif user_input == "help":
