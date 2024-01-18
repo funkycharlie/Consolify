@@ -258,10 +258,12 @@ def shuffle():
         print("Nothing is playing. Please use the play command before using shuffle.")
 
 
-def loop():
+def loop(state):
     try:
-        sp.repeat()
-    except sp.SpotifyError:
-        print("Sorry, that action can't be performed. Maybe nothing's playing.")
+        sp.repeat(state=state)
+    except sp.SpotifyException:
+        print("Sorry, that didn't work. Remember you need to add the state and make sure music is already playing.")
+
+
 
 
