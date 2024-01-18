@@ -261,7 +261,7 @@ def shuffle():
 def loop():
     try:
         sp.repeat()
-    except (SpotifyError):
+    except sp.SpotifyError:
         print("Sorry, that action can't be performed. Maybe nothing's playing.")
 
 
