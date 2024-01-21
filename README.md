@@ -1,3 +1,5 @@
+# This project is no longer being worked on due to the fact that I switched to YouTube Music. However, I will be working on a YTM version of this app, so stay tuned!
+## If you like, you could fork this, I'd love to see this project be finished!
 
 # Consolify - Spotify Console Interface
 ![logo](https://github.com/funkycharlie/Consolify/assets/152520435/edfda504-310e-40ab-8941-9dbf4e2982b0)
