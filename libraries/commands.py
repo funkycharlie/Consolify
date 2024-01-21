@@ -256,3 +256,14 @@ def shuffle():
             print("Shuffle enabled.")
     else:
         print("Nothing is playing. Please use the play command before using shuffle.")
+
+
+def loop(state):
+    try:
+        sp.repeat(state=state)
+    except sp.SpotifyException:
+        print("Sorry, that didn't work. Remember you need to add the state and make sure music is already playing.")
+
+
+
+
